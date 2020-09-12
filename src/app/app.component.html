@@ -1,0 +1,21 @@
+<div class="ui container">
+  <div class="ui secondary pointing menu">
+    <a
+      class="item"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLink="/payment-list"
+      routerLinkActive="active"
+    >
+      Home
+    </a>
+    <a class="item" routerLink="/payment" routerLinkActive="active">
+      Payment
+    </a>
+    <div class="right menu">
+      <a class="ui item"> Logout </a>
+    </div>
+  </div>
+  <div class="ui segment">
+    <router-outlet></router-outlet>
+  </div>
+</div>
