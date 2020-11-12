@@ -1,3 +1,19 @@
+
+
+#Istall the node module
+open terminal and write `npm install`
+
+go to api folder and open another terminal to start node.js locally and write `node index.js`
+
+#Starting the project
+open terminal and Write `ng serve`
+
+
+
+
+
+
+
 # FrontEndTask
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
