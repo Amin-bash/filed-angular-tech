@@ -20,12 +20,14 @@
         maxlength="16"
         placeholder="Card #"
         formControlName="cardno"
+        (keypress)="numberValidation($event)"
+        (keydown)="cardNumberSpaces($event)"
       />
     </div>
     <div class="three wide field">
       <label>CVC</label>
       <input
-        type="text"
+        type="password"
         name="card[cvc]"
         maxlength="3"
         placeholder="CVC"

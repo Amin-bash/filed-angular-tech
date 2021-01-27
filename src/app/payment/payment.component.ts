@@ -4,6 +4,7 @@ import { PaymentService } from './data-access/services/payment.service';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payment',
@@ -11,15 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit, OnDestroy {
+
   public constructor(
     private readonly paymentService: PaymentService,
-    private readonly router: Router
+    private readonly router: Router,
+    private toastr: ToastrService
   ) {}
 
   private readonly _destroy$ = new Subject();
-  public showSuccessfullMsg = false;
-  public showErrorMessage = false;
-  public showProgress = false;
+  public showProgress: boolean = false;
 
   public ngOnInit(): void {}
 
@@ -32,14 +33,14 @@ export class PaymentComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         if (res.status === 200) {
           this.showProgress = false;
-          this.showSuccessfullMsg = true;
+          this.toastr.success("* Successfully reached api, now you will redirect to home page", "Success")
           setTimeout(() => {
             this.router.navigate(['/payment-list']);
           }, 2500);
         }
       }, error => {
         this.showProgress = false;
-        this.showErrorMessage = true;
+        this.toastr.error("Something went wrong, Please try again later", "Error")
       });
   }
 

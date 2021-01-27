@@ -7,7 +7,6 @@ import {
   Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'payment-form',
@@ -36,7 +35,7 @@ export class PaymentFormComponent implements OnInit {
     private data: PaymentService
     ) {}
   public paymentFormGroup: FormGroup;
-  public dateErrFlag = false;
+  public dateErrFlag: boolean = false;
 
   @Output() public readonly submitPayment: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   // @Output() public readonly getPayments: EventEmitter<{}> = new EventEmitter<{}>();
@@ -78,6 +77,15 @@ export class PaymentFormComponent implements OnInit {
       this.submitPayment.emit(this.paymentFormGroup.value);
       this.data.addPayment(this.paymentFormGroup.value);
     }
+  }
+
+  public cardNumberSpaces(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    let foo = input.value.split(" ").join("");
+    if (foo.length > 0) {
+      foo = foo.match(new RegExp('.{1,4}', 'g')).join(" ");
+    }
+    input.value = foo;
   }
 
   public numberValidation(event): boolean {

@@ -20,10 +20,10 @@ export class PaymentService {
 
   public addPayment(value): void {
     this.paymentInfo.push({name: value.cardholder, amount: value.amount})
-    return this.paymentFormData.next(this.paymentInfo)
+    this.paymentFormData.next(this.paymentInfo)
   }
 
-  // Save payment 
+  // Save payment
   public savePayment(paymentDetails: Payment): Observable<ServerResponse> {
     return this.http.post<ServerResponse>(environment.api, paymentDetails);
   }

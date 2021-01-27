@@ -3,7 +3,7 @@
     <div class="ten wide left aligned column">
       <payment-form (submitPayment)="submit($event)"></payment-form>
       <div *ngIf="showProgress" class="ui active inline loader progress-btn"></div>
-      <div class="ui message" *ngIf="showSuccessfullMsg">
+      <!-- <div class="ui message" *ngIf="showSuccessfullMsg">
         <p style="color: rgb(48, 150, 1); font-weight: bold">
           * Successfully reached api, now you will redirect to home page
         </p>
@@ -12,7 +12,7 @@
         <p style="color: rgb(226, 1, 1); font-weight: bold">
           Something went wrong, Please try again later
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
